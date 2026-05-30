@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Almost Gods — Concept-Driven Clothing</title>
+<title>ANIMAL — Concept-Driven Clothing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1006,10 +1006,11 @@ footer{
     <span class="nav-item" data-mega="explore">Explore</span>
   </nav>
 
-  <a class="header-logo" href="#" data-page="home">Almost Gods</a>
+  <a class="header-logo" href="#" data-page="home">ANIMAL</a>
 
   <div class="nav-right">
     <span class="nav-item" id="searchToggle">Search</span>
+    <span class="nav-item" id="shareBtn">Share</span>
     <span class="nav-item" data-page="about">Account</span>
     <span class="nav-item cart-btn" id="cartToggle">Cart (<span id="cartCount">0</span>)</span>
     <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
@@ -1353,7 +1354,7 @@ footer{
           <line x1="76" y1="202" x2="124" y2="202" stroke="#c4ac88" stroke-width=".6" opacity=".3"/>
           <!-- label area -->
           <rect x="82" y="116" width="36" height="52" rx="1" stroke="#c4ac88" stroke-width=".8" opacity=".3" fill="none"/>
-          <text x="100" y="147" text-anchor="middle" fill="#c4ac88" font-size="5.5" letter-spacing="1.5" opacity=".5" font-family="serif">ALMOST GODS</text>
+          <text x="100" y="147" text-anchor="middle" fill="#c4ac88" font-size="5.5" letter-spacing="1.5" opacity=".5" font-family="serif">ANIMAL</text>
           <!-- base -->
           <rect x="60" y="236" width="80" height="14" rx="2" stroke="#c4ac88" stroke-width="1" fill="none"/>
           <rect x="66" y="250" width="68" height="10" rx="1" stroke="#c4ac88" stroke-width=".8" fill="none"/>
@@ -1492,7 +1493,7 @@ footer{
     <div class="about-hero-number">18</div>
     <div class="about-hero-content">
       <p class="about-eyebrow">Est. 2018 · New Delhi</p>
-      <h1 class="about-hero-title">About<br>Almost Gods</h1>
+      <h1 class="about-hero-title">About<br>ANIMAL</h1>
       <p class="about-hero-text">"An independent fashion brand operating out of New Delhi. We seek to renegotiate India's place in today's global cultural conversation."</p>
     </div>
   </section>
@@ -1546,7 +1547,7 @@ footer{
 <footer id="site-footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#" class="footer-logo" data-page="home">Almost Gods</a>
+      <a href="#" class="footer-logo" data-page="home">ANIMAL</a>
       <p class="footer-tagline">An independent fashion brand operating out of New Delhi. Renegotiating India's place in today's global cultural conversation.</p>
       <div style="margin-top:28px">
         <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Newsletter</p>
@@ -1595,7 +1596,7 @@ footer{
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 Almost Gods. All rights reserved.</p>
+    <p class="footer-copy">© 2026 ANIMAL. All rights reserved.</p>
     <div class="footer-socials">
       <a href="https://instagram.com/almostgods" target="_blank">Instagram</a>
       <a href="https://linkedin.com/company/almostgods" target="_blank">LinkedIn</a>
@@ -1736,6 +1737,21 @@ function closeSearch(){
 }
 document.getElementById('searchToggle').addEventListener('click',openSearch);
 document.getElementById('searchClose').addEventListener('click',closeSearch);
+// Share / copy link
+function shareSite(){
+  const url = location.href;
+  const title = document.title || 'ANIMAL';
+  if(navigator.share){
+    navigator.share({title, url}).catch(()=>{});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>alert('Link copied to clipboard'))
+      .catch(()=>prompt('Copy this link', url));
+  } else {
+    prompt('Copy this link', url);
+  }
+}
+const shareEl = document.getElementById('shareBtn');
+if(shareEl) shareEl.addEventListener('click',shareSite);
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){ closeSearch(); closeCart(); closeMobile(); closeMega(); }
 });
